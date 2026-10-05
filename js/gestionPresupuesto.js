@@ -55,7 +55,13 @@ function CrearGasto(descripcion,valor,fecha,...etiquetas) {
         this.valor = nuevoValor;
     };
 
-
+    this.anyadirEtiquetas = function(...nuevasEtiquetas){
+        for(let etiqueta of nuevasEtiquetas){
+            if(!this.etiquetas.includes(etiqueta)){
+                this.etiquetas.push(etiqueta);
+            }
+        }
+    };
 }
 
 
