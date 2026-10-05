@@ -3,6 +3,8 @@
 
 // TODO: Variable global
 let presupuesto  = 0;
+let gastos = [];
+let idGasto = 0;
 
 function actualizarPresupuesto(value) {
     if(typeof value === 'number' && value >= 0){
