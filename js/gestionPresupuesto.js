@@ -80,8 +80,17 @@ function CrearGasto(descripcion,valor,fecha,...etiquetas) {
         }
     }
 
-    this.borrarEtiquetas = function(...etiquetas){
+    this.borrarEtiquetas = function(...deleteEtiqueta){
 
+        for(let i = 0; i < deleteEtiqueta.length ; i++ ){
+
+            for (let j = 0; j < etiquetas.length; j++) {
+                if (etiquetas[j] == deleteEtiqueta[i]) {
+                    etiquetas.splice(j,1);
+                    j--;
+                }
+            }
+        }
     }
 }
 
@@ -101,6 +110,7 @@ function borrarGasto(gastoId){
     for (let i = 0; i < gastos.length; i++) {
         if (gastos[i].id == gastoId) {
             gastos.splice(i,1);
+            return;
         }
     }
 }
