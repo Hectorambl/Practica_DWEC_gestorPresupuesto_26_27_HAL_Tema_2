@@ -102,6 +102,8 @@ function calcularTotalGastos(){
 
 function calcularBalance(){
 
+    return presupuesto - calcularTotalGastos();
+
 }
 
 
