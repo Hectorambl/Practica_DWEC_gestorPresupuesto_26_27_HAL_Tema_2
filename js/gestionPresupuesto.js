@@ -80,12 +80,24 @@ function anyadirGasto(gasto){
     gastos.push(gasto);
 }
 
-function borrarGasto(){
-    
+function borrarGasto(gastoId){
+
+    for (let i = 0; i < gastos.length; i++) {
+        if (gastos[i].id == gastoId) {
+            gastos.splice(i,1);
+        }
+    }
 }
 
 function calcularTotalGastos(){
 
+    let result = 0;
+
+    for(let gasto of gastos){
+        result += gasto.valor;
+    }
+
+    return result;
 }
 
 function calcularBalance(){
