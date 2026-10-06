@@ -40,7 +40,7 @@ function CrearGasto(descripcion,valor,fecha,...etiquetas) {
 
 
     this.mostrarGastoCompleto = function() {
-        console.log("entro en mostrarGastoCompleto");
+
         let etiquetas = "";
 
         for (let etiqueta of this.etiquetas) {
@@ -72,6 +72,17 @@ function CrearGasto(descripcion,valor,fecha,...etiquetas) {
             }
         }
     };
+
+    this.actualizarFecha = function(fecha){
+        if(typeof fecha === 'string'  && !isNaN(Date.parse(fecha))){
+            fecha = Date.parse(fecha); 
+            return this.fecha = fecha;
+        }
+    }
+
+    this.borrarEtiquetas = function(...etiquetas){
+
+    }
 }
 
 
