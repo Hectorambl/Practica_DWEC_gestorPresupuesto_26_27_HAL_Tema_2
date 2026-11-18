@@ -37,6 +37,28 @@ function mostrarGastoWeb(idElemento, gasto){
         divGastoEtiquetas.append(spanGastoEtiquetas);
     }
 
+    let editButton = document.createElement("button");
+    editButton.className = "gasto-editar";
+    editButton.type = "button";
+    editButton.textContent = "Editar";
+    divGasto.append(editButton);
+
+    let miEdicion = new EditarHandle();
+    miEdicion.gasto = gasto;
+
+    editButton.addEventListener("click", miEdicion);
+    
+    let deleteButton = document.createElement("button");
+    deleteButton.className = "gasto-borrar";
+    deleteButton.type = "button"
+    deleteButton.textContent = "Borrar";
+    divGasto.append(deleteButton);
+
+    let miBorrar = new BorrarHandle();
+    miBorrar.gasto = gasto;
+
+    deleteButton.addEventListener("click", miBorrar);
+
     divGasto.append(divGastoEtiquetas);
     elemento.append(divGasto);
 }
@@ -119,7 +141,41 @@ function nuevoGastoWeb(){
 
     repintar();
 }
+
 document.getElementById("anyadirgasto").addEventListener("click", nuevoGastoWeb);
+
+function EditarHandle(){
+
+    this.handleEvent = function(event){
+
+        let descripcion = prompt("Introduce una descripcion", this.gasto.descripcion);
+
+        let valor = prompt("Introduce un valor", this.gasto.valor);
+        valor = Number(valor);
+
+        let fecha = prompt("Introduce una fecha", this.gasto.fecha);
+
+        let etiquetas = prompt("Introduce las etiquetas", this.gasto.etiquetas);
+        etiquetas = etiquetas.split(",");
+
+        this.gasto.actualizarValor(valor);
+        this.gasto.actualizarDescripcion(descripcion);
+        this.gasto.actualizarFecha(fecha);
+        this.gasto.anyadirEtiquetas(...etiquetas);
+
+        repintar();
+    }
+}
+
+function BorrarHandle(){
+
+    this.handleEvent = function(event){
+
+        gp.borrarGasto(this.gasto.id);
+
+        repintar();
+    }
+}
 
 export{
     mostrarDatoEnId,
@@ -127,5 +183,7 @@ export{
     mostrarGastosAgrupadosWeb,
     repintar,
     actualizarPresupuestoWeb,
-    nuevoGastoWeb
+    nuevoGastoWeb,
+    EditarHandle,
+    BorrarHandle
 }
