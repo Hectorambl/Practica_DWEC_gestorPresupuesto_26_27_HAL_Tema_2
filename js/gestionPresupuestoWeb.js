@@ -103,7 +103,23 @@ document.getElementById("actualizarpresupuesto").addEventListener("click",actual
 
 function nuevoGastoWeb(){
 
+    let descripcion = prompt("Introduce una descripcion","");
+
+    let valor = prompt("Introduce un valor", 0);
+    valor = Number(valor);
+
+    let fecha = prompt("Introduce una fecha", "2026-11-17");
+
+    let etiquetas = prompt("Introduce las etiquetas", "");
+    etiquetas = etiquetas.split(",");
+
+    let gasto = new gp.CrearGasto(descripcion, valor, fecha, ...etiquetas);
+
+    gp.anyadirGasto(gasto);
+
+    repintar();
 }
+document.getElementById("anyadirgasto").addEventListener("click", nuevoGastoWeb);
 
 export{
     mostrarDatoEnId,
