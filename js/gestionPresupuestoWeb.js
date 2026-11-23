@@ -18,7 +18,9 @@ function mostrarGastoWeb(idElemento, gasto){
 
     let divGastoFecha = document.createElement("div");
     divGastoFecha.className = "gasto-fecha";
-    divGastoFecha.textContent = gasto.fecha;
+    let miFehcha = new Date(gasto.fecha);
+    miFehcha = miFehcha.toLocaleDateString('es')
+    divGastoFecha.textContent = miFehcha;
     divGasto.append(divGastoFecha);
 
     let divGastoValor = document.createElement("div");
