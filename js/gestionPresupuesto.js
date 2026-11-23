@@ -60,7 +60,7 @@ function CrearGasto(descripcion,valor,fecha,...etiquetas) {
     this.actualizarDescripcion = function(nuevaDescripcion) {
         this.descripcion = nuevaDescripcion
     };
-
+    
     this.actualizarValor = function(nuevoValor) {
         if(typeof nuevoValor !== "number" ||  nuevoValor < 0 ){
             nuevoValor = this.valor;
